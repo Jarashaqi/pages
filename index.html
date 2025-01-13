@@ -293,6 +293,51 @@
 .content-box ul li:last-child {
     border-bottom: none;
 }
+        
+/* Tambahkan CSS berikut */
+.visi-misi-section {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    padding: 0;
+}
+
+.visi-misi-section .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+    scroll-snap-align: start;
+}
+
+.visi-misi-content {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    padding: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #27ae60 #f1f1f1;
+}
+
+.visi-misi-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.visi-misi-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.visi-misi-content::-webkit-scrollbar-thumb {
+    background: #27ae60;
+    border-radius: 10px;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
         
     </style>
@@ -325,35 +370,38 @@
 
 
 <section id="visi-misi" class="visi-misi-section">
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero-content text-center">
-            <h1>Visi & Misi</h1>
-            <p class="subtitle">Membangun Masa Depan yang Lebih Baik</p>
-        </div>
-
-        <!-- Visi Section -->
-        <div class="visi-container">
-            <h2>Visi</h2>
-            <div class="content-box">
-                <p>"Menjadi perusahaan terdepan yang mengutamakan inovasi dan keberlanjutan untuk menciptakan dampak positif bagi masyarakat"</p>
+    <div class="visi-misi-content">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="hero-content text-center">
+                <h1>Visi & Misi</h1>
+                <p class="subtitle">Membangun Masa Depan yang Lebih Baik</p>
             </div>
-        </div>
 
-        <!-- Misi Section -->
-        <div class="misi-container">
-            <h2>Misi</h2>
-            <div class="content-box">
-                <ul>
-                    <li>Mengembangkan produk dan layanan berkualitas tinggi</li>
-                    <li>Membangun tim yang profesional dan berdedikasi</li>
-                    <li>Menerapkan praktik bisnis yang berkelanjutan</li>
-                    <li>Berkontribusi pada kesejahteraan masyarakat</li>
-                </ul>
+            <!-- Visi Section -->
+            <div class="visi-container">
+                <h2>Visi</h2>
+                <div class="content-box">
+                    <p>"Menjadi perusahaan terdepan yang mengutamakan inovasi dan keberlanjutan untuk menciptakan dampak positif bagi masyarakat"</p>
+                </div>
+            </div>
+
+            <!-- Misi Section -->
+            <div class="misi-container">
+                <h2>Misi</h2>
+                <div class="content-box">
+                    <ul>
+                        <li>Mengembangkan produk dan layanan berkualitas tinggi</li>
+                        <li>Membangun tim yang profesional dan berdedikasi</li>
+                        <li>Menerapkan praktik bisnis yang berkelanjutan</li>
+                        <li>Berkontribusi pada kesejahteraan masyarakat</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
         <section id="program" style="background-color:#ffffff;">
