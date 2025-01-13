@@ -115,8 +115,8 @@
     <div id="fullpage">
         <!-- Hero Section -->
         <div class="section" style="background-color:#27ae60; color:white;">
-            <h1 class="animate_animated animate_fadeInDown">Selamat Datang di Bank Sampah Digital</h1>
-            <p class="animate_animated animate_fadeInUp">Solusi Berkelanjutan untuk Pengelolaan Sampah</p>
+            <h1 class="animate_animated animate_fadeInDown">Selamat Datang di Sekolah Sampah indonesia</h1>
+            <p class="animate_animated animate_fadeInUp">Green Hero, Green Society.</p>
         </div>
 
         <!-- Visi Misi -->
@@ -134,10 +134,6 @@
         <!-- Program Unggulan -->
         <div class="section" style="background-color:#f4f4f4;">
             <h1>Program Unggulan</h1>
-            <div class="program-card">
-                <h3>Bank Sampah Digital</h3>
-                <p>Sistem pengelolaan sampah yang modern dan terintegrasi.</p>
-            </div>
             <div class="program-card">
                 <h3>Edukasi Lingkungan</h3>
                 <p>Program pelatihan untuk sekolah dan masyarakat.</p>
