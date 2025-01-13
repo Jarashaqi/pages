@@ -339,6 +339,108 @@
     padding: 20px;
 }
 
+.visi-misi-section {
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Timeline Styling */
+.timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    background: #27ae60;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.timeline-content {
+    margin-left: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Vision Mission Grid */
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.vision-card, .mission-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #27ae60;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 2rem;
+}
+
+/* Team Section */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.team-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    margin: 15px 0 5px;
+}
+
+.team-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+        
         
     </style>
 </head>
@@ -372,35 +474,85 @@
 <section id="visi-misi" class="visi-misi-section">
     <div class="visi-misi-content">
         <div class="content-wrapper">
-            <!-- Hero Section -->
-            <div class="hero-content text-center">
-                <h1>Visi & Misi</h1>
-                <p class="subtitle">Membangun Masa Depan yang Lebih Baik</p>
-            </div>
-
-            <!-- Visi Section -->
-            <div class="visi-container">
-                <h2>Visi</h2>
-                <div class="content-box">
-                    <p>"Menjadi perusahaan terdepan yang mengutamakan inovasi dan keberlanjutan untuk menciptakan dampak positif bagi masyarakat"</p>
+            <!-- Story Section -->
+            <div class="story-section">
+                <h2>Perjalanan Kami</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>2020</h3>
+                            <p>Awal mula ide untuk membuat perubahan dalam pengelolaan sampah</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>2021</h3>
+                            <p>Pembentukan tim dan pengembangan sistem</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>2022</h3>
+                            <p>Peluncuran program dan ekspansi ke berbagai wilayah</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Misi Section -->
-            <div class="misi-container">
-                <h2>Misi</h2>
-                <div class="content-box">
+            <!-- Vision Mission Section -->
+            <div class="vision-mission-grid">
+                <div class="vision-card">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2>Visi</h2>
+                    <p>"Menjadi pelopor dalam transformasi pengelolaan sampah digital yang berkelanjutan"</p>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2>Misi</h2>
                     <ul>
-                        <li>Mengembangkan produk dan layanan berkualitas tinggi</li>
-                        <li>Membangun tim yang profesional dan berdedikasi</li>
-                        <li>Menerapkan praktik bisnis yang berkelanjutan</li>
-                        <li>Berkontribusi pada kesejahteraan masyarakat</li>
+                        <li>Mengembangkan sistem pengelolaan sampah terintegrasi</li>
+                        <li>Memberdayakan masyarakat melalui edukasi</li>
+                        <li>Menciptakan lingkungan yang lebih bersih</li>
+                        <li>Mendorong inovasi dalam daur ulang</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="team-section">
+                <h2>Tim Kami</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="path/to/team1.jpg" alt="Team Member 1">
+                        <h3>John Doe</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="path/to/team2.jpg" alt="Team Member 2">
+                        <h3>Jane Smith</h3>
+                        <p>Head of Operations</p>
+                    </div>
+                    <!-- Add more team members -->
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
 
