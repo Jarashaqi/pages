@@ -188,65 +188,119 @@
             }
         }
 
-#hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
+        #hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .slider-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        
+        .slider-controls {
+            position: absolute;
+            bottom: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 3;
+        }
+        
+        .prev-btn, .next-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
 
-.slider-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.slide.active {
-    opacity: 1;
+.visi-misi-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    padding: 2rem;
+    margin-bottom: 60px;
 }
 
-.slider-controls {
-    position: absolute;
-    bottom: 2rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    z-index: 3;
+.hero-content h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
-.prev-btn, .next-btn {
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
 }
 
+.visi-container, .misi-container {
+    margin-bottom: 40px;
+}
+
+.content-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.content-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.content-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-box ul li {
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: #444;
+    border-bottom: 1px solid #eee;
+}
+
+.content-box ul li:last-child {
+    border-bottom: none;
+}
+
+        
     </style>
 </head>
 <body>
     <div class="nav-dots">
         <div class="nav-dot active" data-section="hero"></div>
-        <div class="nav-dot" data-section="visi"></div>
+        <div class="nav-dot" data-section="visi-misi"></div>
         <div class="nav-dot" data-section="program"></div>
         <div class="nav-dot" data-section="stats"></div>
         <div class="nav-dot" data-section="blog"></div>
@@ -270,13 +324,37 @@
         </section>
 
 
-        <section id="visi" style="background-color:#ecf0f1;">
-            <div class="container">
-                <h1>Visi dan Misi</h1>
-                <p><strong>Visi:</strong> Mewujudkan lingkungan yang bersih dan berkelanjutan</p>
-                <p><strong>Misi:</strong> Mengembangkan sistem pengelolaan sampah digital yang terintegrasi</p>
+<section id="visi-misi" class="visi-misi-section">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-content text-center">
+            <h1>Visi & Misi</h1>
+            <p class="subtitle">Membangun Masa Depan yang Lebih Baik</p>
+        </div>
+
+        <!-- Visi Section -->
+        <div class="visi-container">
+            <h2>Visi</h2>
+            <div class="content-box">
+                <p>"Menjadi perusahaan terdepan yang mengutamakan inovasi dan keberlanjutan untuk menciptakan dampak positif bagi masyarakat"</p>
             </div>
-        </section>
+        </div>
+
+        <!-- Misi Section -->
+        <div class="misi-container">
+            <h2>Misi</h2>
+            <div class="content-box">
+                <ul>
+                    <li>Mengembangkan produk dan layanan berkualitas tinggi</li>
+                    <li>Membangun tim yang profesional dan berdedikasi</li>
+                    <li>Menerapkan praktik bisnis yang berkelanjutan</li>
+                    <li>Berkontribusi pada kesejahteraan masyarakat</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
 
         <section id="program" style="background-color:#ffffff;">
             <div class="container">
