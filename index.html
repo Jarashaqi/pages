@@ -3,80 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEMAI - Sekolah Sampah Indonesia</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SEMAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background-color: #4A0404;
+            min-height: 60vh;
+            position: relative;
+        }
+        
+        .hero-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .stats-section {
+            background: #1A1A1A;
+            padding: 2rem 0;
+        }
+
+        .stat-item {
+            background: #333;
+            padding: 1rem;
+            margin: 0.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .gallery-section {
+            background: #2A2A2A;
+            padding: 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">SEMAI</div>
-        <div class="nav-links">
-            <a href="#program">PROGRAM</a>
-            <a href="#layanan">LAYANAN</a>
-            <a href="#tentang">TENTANG KAMI</a>
-            <a href="#artikel">ARTIKEL</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Sekolah Sampah Indonesia</h1>
-            <p>Empowering Communities for a Sustainable Future</p>
-        </div>
-    </header>
-
-    <section class="featured">
-        <div class="featured-box">
-            <h2>Featured Programs</h2>
-            <div class="green-school">
-                <h3>Green School Project</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">SEMAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#program">PROGRAM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#layanan">LAYANAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tentang">TENTANG KAMI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#artikel">ARTIKEL</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="gallery-box">
-            <h2>Gallery</h2>
-        </div>
-    </section>
-
-    <section class="school-stats">
-        <div class="school-name">Nama Sekolah</div>
-        <div class="environmental-action">Aksi Lingkungan</div>
-        <div class="stats-container">
-            <div class="stat">Stat</div>
-            <div class="stat">Stat</div>
-            <div class="stat">Stat</div>
-            <div class="stat">Stat</div>
-        </div>
-    </section>
-
-    <section class="maggot-section">
-        <h2>Maggot Farm</h2>
-        <div class="maggot-content">
-            <div class="maggot-image"></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </section>
-
-    <section class="life-circle">
-        <h2>Life Circle Maggot</h2>
-    </section>
-
-    <section class="main-services">
-        <h2>Layanan Utama</h2>
-        <div class="services-grid">
-            <div class="service-item"></div>
-            <div class="service-item"></div>
-            <div class="service-item"></div>
-            <div class="service-item"></div>
-        </div>
-    </section>
-
-    <footer>
-        <h2>Mitra</h2>
-        <div class="partners">
-            <div class="partner"></div>
-            <div class="partner"></div>
-            <div class="partner"></div>
-        </div>
-    </footer>
-</body>
-</html>
+    </na
