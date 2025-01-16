@@ -1,115 +1,487 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sekolah Sampah Indonesia</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Bank Sampah Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        .fade {
-            animation: fadeAnimation 1s;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        @keyframes fadeAnimation {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        html.lenis {
+            height: auto;
         }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Program Cards */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .stat-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .stat-card h3 {
+            color: #27ae60;
+        }
+
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #27ae60;
+            transform: scale(1.3);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            z-index: 90;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+#hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slider-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 3;
+}
+
+.prev-btn, .next-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+        
+#visi p {
+    text-align: left;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+#visi h1 {
+    text-align: left;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
     </style>
 </head>
 <body>
-    <div id="backgroundContainer" class="min-h-screen relative">
-        <div class="absolute bottom-8 left-8 z-10">
-            <div class="bg-red-100/20 backdrop-blur-sm rounded-lg p-6">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-2">
-                    Sekolah Sampah Indonesia
-                </h1>
-                <p class="text-lg md:text-xl text-gray-200">
-                    Empowering Communities for a Sustainable Future
-                </p>
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="hero"></div>
+        <div class="nav-dot" data-section="visi"></div>
+        <div class="nav-dot" data-section="program"></div>
+        <div class="nav-dot" data-section="stats"></div>
+        <div class="nav-dot" data-section="blog"></div>
+    </div>
+
+    <main>
+        <section id="hero">
+            <div class="slider-container">
+                <div class="slide active" style="background-image: url('https://picsum.photos/1920/1080?random=1')"></div>
+                <div class="slide" style="background-image: url('https://picsum.photos/1920/1080?random=2')"></div>
+                <div class="slide" style="background-image: url('https://picsum.photos/1920/1080?random=3')"></div>
             </div>
-        </div>
-    </div>
-    
-<div class="container mx-auto px-4 py-8 bg-gray-100">
-    <!-- Featured Programs Header -->
-    <div class="bg-gray-200 p-2 mb-6">
-        <h2 class="text-gray-800 text-xl">Featured Programs</h2>
-    </div>
+            <div class="hero-content">
+                <h1>Sekolah Sampah indonesia</h1>
+                <p>Green Hero, Green Society.</p>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-btn">&lt;</button>
+                <button class="next-btn">&gt;</button>
+            </div>
+        </section>
 
-    <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Green School Project -->
-        <div class="bg-[#1A1A1A] p-8 text-white">
-            <h3 class="text-2xl mb-4">Green School Project</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque scelerisque vel ante quis egestas. Cras varius
-                rutrum ex semper. Integer dus parturient montes, nascetur
-                ridiculus mus commodo. Proin ullamcorper ante pulvinar eleifend.
-            </p>
-        </div>
-
-        <!-- Gallery -->
-        <div class="bg-[#4A0404] p-8 flex items-center justify-center">
-            <h3 class="text-3xl text-white">Gallery</h3>
-        </div>
-    </div>
-
-    <!-- Navigation Tabs -->
-    <div class="grid grid-cols-2 mt-6">
-        <div class="bg-black text-white p-3 text-center">Nama Sekolah</div>
-        <div class="bg-orange-400 text-black p-3 text-center">Aksi Lingkungan</div>
-    </div>
-
-    <!-- Stats -->
-    <div class="grid grid-cols-4 gap-4 mt-4">
-        <div class="bg-gray-200 p-4 text-center">Stat</div>
-        <div class="bg-gray-200 p-4 text-center">Stat</div>
-        <div class="bg-gray-200 p-4 text-center">Stat</div>
-        <div class="bg-gray-200 p-4 text-center">Stat</div>
-    </div>
-
-    <!-- Slider -->
-    <div class="relative mt-6 bg-[#1A1A1A] p-8 flex items-center">
-        <button class="absolute left-4 text-white text-2xl">&lt;</button>
-        <div class="mx-auto text-white">
-            <h3 class="text-2xl mb-4">Title</h3>
-            <p class="max-w-md text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Aliquam tristique sed ut hendrerit. Sed sed leo in facilisis
-                tortor eget suscipit.
-            </p>
-        </div>
-        <button class="absolute right-4 text-white text-2xl">&gt;</button>
-    </div>
-</div>
+        <section id="visi" style="background-color:#ecf0f1;">
+            <div class="container">
+                <h1 style="font-family: 'Georgia', serif;">Our Vision</h1>
+                <p>Terwujudnya lembaga eksekutif yang aktif, responsif, dan konstruktif dalam gerakan, pengabdian, pelayanan serta pengembangan minat dan bakat mahasiswa untuk FEB UI dan Indonesia.</p>
+                
+                <h1 style="font-family: 'Georgia', serif; margin-top: 40px;">Our Mission</h1>
+                <div style="margin-left: 20px;">
+                    <p style="text-align: left; margin-bottom: 20px;">
+                        <span style="color: #27ae60; margin-right: 10px;">➜</span>
+                        Memberikan pelayanan terbaik dan manfaat berkelanjutan dalam rangka pemenuhan kebutuhan dan hajat hidup mahasiswa FEB UI.
+                    </p>
+                    <p style="text-align: left; margin-bottom: 20px;">
+                        <span style="color: #27ae60; margin-right: 10px;">➜</span>
+                        Mewadahi dan memfasilitasi pengembangan minat-bakat serta meningkatkan prestasi mahasiswa FEB UI.
+                    </p>
+                    <p style="text-align: left; margin-bottom: 20px;">
+                        <span style="color: #27ae60; margin-right: 10px;">➜</span>
+                        Menciptakan, mengembangkan, dan menyebarkan nilai-nilai inklusivitas gerakan pengabdian mahasiswa FEB UI untuk Indonesia.
+                    </p>
+                    <p style="text-align: left;">
+                        <span style="color: #27ae60; margin-right: 10px;">➜</span>
+                        Menanamkan akar nilai dan budaya BEM FEB UI serta memberikan nilai tambah yang optimal kepada seluruh fungsionaris.
+                    </p>
+                </div>
+            </div>
+        </section>
 
 
+        <section id="program" style="background-color:#ffffff;">
+            <div class="container">
+                <h1>Program Unggulan</h1>
+                <div class="program-grid">
+                    <div class="program-card">
+                        <h3>Edukasi Lingkungan</h3>
+                        <p>Program pelatihan untuk masyarakat</p>
+                    </div>
+                    <div class="program-card">
+                        <h3>Budidaya Maggot BSF</h3>
+                        <p>Pengolahan sampah organik berkelanjutan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script>
-        const images = [
-            'https://picsum.photos/1280/720',
-            'https://picsum.photos/1280/721',
-            'https://picsum.photos/1280/722'
-        ];
-        let currentIndex = 0;
-        const container = document.getElementById('backgroundContainer');
-        
-        function changeBackground() {
-            container.style.backgroundImage = images[currentIndex];
-            container.style.backgroundColor = '#4A0404';
-            container.style.backgroundSize = 'cover';
-            container.style.backgroundPosition = 'center';
-            container.classList.add('fade');
-            
-            setTimeout(() => {
-                container.classList.remove('fade');
-            }, 1000);
+        <section id="stats" style="background-color:#27ae60; color:white;">
+            <div class="container">
+                <h1>Statistik Pencapaian</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h2>1250 Ton</h2>
+                        <p>Sampah Terkelola</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2>500+</h2>
+                        <p>Pengguna Aktif</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2>85%</h2>
+                        <p>Impact Lingkungan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            currentIndex = (currentIndex + 1) % images.length;
+        <section id="blog" style="background-color:#ecf0f1;">
+            <div class="container">
+                <h1>Berita Terkini</h1>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://picsum.photos/400/250?random=1" alt="Blog 1">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Program Terbaru</h3>
+                            <p>Inovasi dalam pengelolaan sampah digital...</p>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://picsum.photos/400/250?random=2" alt="Blog 2">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Edukasi Masyarakat</h3>
+                            <p>Program edukasi untuk masyarakat lokal...</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import Lenis from 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.27/+esm'
+
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
         }
 
-        changeBackground();
-        setInterval(changeBackground, 5000);
+        requestAnimationFrame(raf)
+
+        // Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible')
+                    
+                    // Update navigation dots
+                    const sectionId = entry.target.closest('section').id
+                    document.querySelectorAll('.nav-dot').forEach(dot => {
+                        dot.classList.toggle('active', dot.dataset.section === sectionId)
+                    })
+                }
+            })
+        }, {
+            threshold: 0.5
+        })
+
+        // Observe all containers
+        document.querySelectorAll('.container').forEach(container => {
+            observer.observe(container)
+        })
+
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const section = document.getElementById(dot.dataset.section)
+                lenis.scrollTo(section)
+            })
+        })
+
+        // Prevent partial scrolling between sections
+        let isScrolling = false
+        let lastScrollTime = 0
+        const scrollThreshold = 1000 // ms
+
+        window.addEventListener('wheel', (e) => {
+            const currentTime = new Date().getTime()
+            if (currentTime - lastScrollTime < scrollThreshold) return
+            
+            if (!isScrolling) {
+                isScrolling = true
+                const direction = e.deltaY > 0 ? 1 : -1
+                const currentSection = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
+                    .closest('section')
+                
+                if (currentSection) {
+                    const sections = Array.from(document.querySelectorAll('section'))
+                    const currentIndex = sections.indexOf(currentSection)
+                    const nextIndex = currentIndex + direction
+                    
+                    if (nextIndex >= 0 && nextIndex < sections.length) {
+                        lenis.scrollTo(sections[nextIndex])
+                    }
+                }
+                
+                lastScrollTime = currentTime
+                setTimeout(() => {
+                    isScrolling = false
+                }, scrollThreshold)
+            }
+        }, { passive: true })
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+});
+
     </script>
 </body>
 </html>
