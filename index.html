@@ -31,16 +31,16 @@
 
     <script>
         const images = [
-            'url("http://via.placeholder.com/1280x720")',
-            'url("http://via.placeholder.com/1280x720")',
-            'url("http://via.placeholder.com/1280x720")'
+            'https://picsum.photos/1280/720',
+            'https://picsum.photos/1280/721',
+            'https://picsum.photos/1280/722'
         ];
         let currentIndex = 0;
         const container = document.getElementById('backgroundContainer');
         
         function changeBackground() {
             container.style.backgroundImage = images[currentIndex];
-            container.style.backgroundColor = '#741B1B';
+            container.style.backgroundColor = '#4A0404';
             container.style.backgroundSize = 'cover';
             container.style.backgroundPosition = 'center';
             container.classList.add('fade');
@@ -49,4 +49,11 @@
                 container.classList.remove('fade');
             }, 1000);
 
-            currentIndex = (currentInd
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        changeBackground();
+        setInterval(changeBackground, 5000);
+    </script>
+</body>
+</html>
