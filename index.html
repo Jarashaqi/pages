@@ -1,619 +1,85 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Sampah Digital</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html.lenis {
-            height: auto;
-        }
-
-        .lenis.lenis-smooth {
-            scroll-behavior: auto;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        section {
-            height: 100vh;
-            width: 100vw;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* Program Cards */
-        .program-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .program-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .stat-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-            color: #333;
-        }
-
-        .stat-card h3 {
-            color: #27ae60;
-        }
-
-
-        /* Blog Grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .blog-image {
-            height: 200px;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        /* Navigation */
-        .nav-dots {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 100;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-dot.active {
-            background: #27ae60;
-            transform: scale(1.3);
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            z-index: 90;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            p {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 0 10px;
-            }
-        }
-
-        #hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-        
-        .slider-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .slide.active {
-            opacity: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-        
-        .slider-controls {
-            position: absolute;
-            bottom: 2rem;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            z-index: 3;
-        }
-        
-        .prev-btn, .next-btn {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-.visi-misi-program-section {
-    height: 100vh;
-    background: #f8f9fa;
-    overflow-y: auto;
-    padding: 40px 0;
-}
-
-.content-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.journey-section {
-    text-align: center;
-}
-
-.journey-section h2 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 50px;
-}
-
-.timeline {
-    position: relative;
-    padding: 30px 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: #27ae60;
-}
-
-.milestone {
-    margin-bottom: 60px;
-    position: relative;
-}
-
-.milestone-icon {
-    width: 60px;
-    height: 60px;
-    background: #27ae60;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-}
-
-.milestone-content {
-    width: 80%;
-    margin: 30px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.mission-points {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.mission-points span {
-    background: #e8f5e9;
-    padding: 8px 16px;
-    border-radius: 20px;
-    color: #27ae60;
-}
-
-.program-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.program-item {
-    padding: 20px;
-    background: #e8f5e9;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.program-item i {
-    font-size: 2rem;
-    color: #27ae60;
-    margin-bottom: 15px;
-}
-
-.program-item h4 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.program-item p {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 30px;
-    }
-    
-    .milestone-icon {
-        left: 30px;
-    }
-    
-    .milestone-content {
-        width: calc(100% - 60px);
-        margin-left: 60px;
-    }
-}
-
-        
-        
-    </style>
+    <title>Sekolah Sampah Indonesia</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="nav-dots">
-        <div class="nav-dot active" data-section="hero"></div>
-        <div class="nav-dot" data-section="visi-misi-program"></div>
-        <div class="nav-dot" data-section="program"></div>
-        <div class="nav-dot" data-section="stats"></div>
-        <div class="nav-dot" data-section="blog"></div>
-    </div>
+    <nav class="navbar">
+        <div class="logo">SEMAI</div>
+        <div class="nav-links">
+            <a href="#program">PROGRAM</a>
+            <a href="#layanan">LAYANAN</a>
+            <a href="#tentang">TENTANG KAMI</a>
+            <a href="#artikel">ARTIKEL</a>
+        </div>
+    </nav>
 
-    <main>
-        <section id="hero">
-            <div class="slider-container">
-                <div class="slide active" style="background-image: url('https://picsum.photos/1920/1080?random=1')"></div>
-                <div class="slide" style="background-image: url('https://picsum.photos/1920/1080?random=2')"></div>
-                <div class="slide" style="background-image: url('https://picsum.photos/1920/1080?random=3')"></div>
-            </div>
-            <div class="hero-content">
-                <h1>Sekolah Sampah indonesia</h1>
-                <p>Green Hero, Green Society.</p>
-            </div>
-            <div class="slider-controls">
-                <button class="prev-btn">&lt;</button>
-                <button class="next-btn">&gt;</button>
-            </div>
-        </section>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Sekolah Sampah Indonesia</h1>
+            <p>Empowering Communities for a Sustainable Future</p>
+        </div>
+    </header>
 
-
-<section id="visi-misi-program" class="visi-misi-program-section">
-    <div class="visi-misi-content">
-        <div class="content-wrapper">
-            <!-- Journey Timeline -->
-            <div class="journey-section">
-                <h2>Perjalanan Menuju Perubahan</h2>
-                <div class="timeline">
-                    <div class="milestone">
-                        <div class="milestone-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="milestone-content">
-                            <h3>Visi Kami</h3>
-                            <p>"Menjadi pelopor transformasi pengelolaan sampah digital untuk Indonesia yang lebih bersih"</p>
-                        </div>
-                    </div>
-                    
-                    <div class="milestone">
-                        <div class="milestone-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <div class="milestone-content">
-                            <h3>Misi Kami</h3>
-                            <div class="mission-points">
-                                <span>Inovasi Digital</span>
-                                <span>Pemberdayaan Masyarakat</span>
-                                <span>Keberlanjutan Lingkungan</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="milestone">
-                        <div class="milestone-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="milestone-content">
-                            <h3>Program Unggulan</h3>
-                            <div class="program-cards">
-                                <div class="program-item">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <h4>Edukasi Lingkungan</h4>
-                                    <p>Membentuk generasi peduli lingkungan</p>
-                                </div>
-                                <div class="program-item">
-                                    <i class="fas fa-recycle"></i>
-                                    <h4>Budidaya BSF</h4>
-                                    <p>Solusi sampah organik berkelanjutan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <section class="featured">
+        <div class="featured-content">
+            <div class="program-box">
+                <h2>Featured Programs</h2>
+                <div class="green-school">
+                    <h3>Green School Project</h3>
+                    <p>Lorem ipsum dolor sit amet...</p>
                 </div>
+            </div>
+            <div class="gallery-box">
+                <h2>Gallery</h2>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <section class="school-action">
+        <div class="school-name">Nama Sekolah</div>
+        <div class="action">Aksi Lingkungan</div>
+    </section>
 
-        <section id="stats" style="background-color:#27ae60; color:white;">
-            <div class="container">
-                <h1>Statistik Pencapaian</h1>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h2>1250 Ton</h2>
-                        <p>Sampah Terkelola</p>
-                    </div>
-                    <div class="stat-card">
-                        <h2>500+</h2>
-                        <p>Pengguna Aktif</p>
-                    </div>
-                    <div class="stat-card">
-                        <h2>85%</h2>
-                        <p>Impact Lingkungan</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="stats">
+        <div class="stat-item">Stat</div>
+        <div class="stat-item">Stat</div>
+        <div class="stat-item">Stat</div>
+        <div class="stat-item">Stat</div>
+    </section>
 
-        <section id="blog" style="background-color:#ecf0f1;">
-            <div class="container">
-                <h1>Berita Terkini</h1>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-image">
-                            <img src="https://picsum.photos/400/250?random=1" alt="Blog 1">
-                        </div>
-                        <div class="blog-content">
-                            <h3>Program Terbaru</h3>
-                            <p>Inovasi dalam pengelolaan sampah digital...</p>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-image">
-                            <img src="https://picsum.photos/400/250?random=2" alt="Blog 2">
-                        </div>
-                        <div class="blog-content">
-                            <h3>Edukasi Masyarakat</h3>
-                            <p>Program edukasi untuk masyarakat lokal...</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section class="maggot-farm">
+        <h2>Maggot Farm</h2>
+        <div class="maggot-content">
+            <div class="maggot-image"></div>
+            <p>Lorem ipsum dolor sit amet...</p>
+        </div>
+    </section>
 
-    <script type="module">
-        import Lenis from 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.27/+esm'
+    <section class="life-circle">
+        <h2>Life Circle Maggot</h2>
+    </section>
 
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            infinite: false,
-        })
+    <section class="services">
+        <h2>Layanan Utama</h2>
+        <div class="service-grid">
+            <div class="service-item"></div>
+            <div class="service-item"></div>
+            <div class="service-item"></div>
+            <div class="service-item"></div>
+        </div>
+    </section>
 
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-
-        requestAnimationFrame(raf)
-
-        // Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible')
-                    
-                    // Update navigation dots
-                    const sectionId = entry.target.closest('section').id
-                    document.querySelectorAll('.nav-dot').forEach(dot => {
-                        dot.classList.toggle('active', dot.dataset.section === sectionId)
-                    })
-                }
-            })
-        }, {
-            threshold: 0.5
-        })
-
-        // Observe all containers
-        document.querySelectorAll('.container').forEach(container => {
-            observer.observe(container)
-        })
-
-        // Navigation dot click handlers
-        document.querySelectorAll('.nav-dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const section = document.getElementById(dot.dataset.section)
-                lenis.scrollTo(section)
-            })
-        })
-
-        // Prevent partial scrolling between sections
-        let isScrolling = false
-        let lastScrollTime = 0
-        const scrollThreshold = 1000 // ms
-
-        window.addEventListener('wheel', (e) => {
-            const currentTime = new Date().getTime()
-            if (currentTime - lastScrollTime < scrollThreshold) return
-            
-            if (!isScrolling) {
-                isScrolling = true
-                const direction = e.deltaY > 0 ? 1 : -1
-                const currentSection = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
-                    .closest('section')
-                
-                if (currentSection) {
-                    const sections = Array.from(document.querySelectorAll('section'))
-                    const currentIndex = sections.indexOf(currentSection)
-                    const nextIndex = currentIndex + direction
-                    
-                    if (nextIndex >= 0 && nextIndex < sections.length) {
-                        lenis.scrollTo(sections[nextIndex])
-                    }
-                }
-                
-                lastScrollTime = currentTime
-                setTimeout(() => {
-                    isScrolling = false
-                }, scrollThreshold)
-            }
-        }, { passive: true })
-
-document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentSlide = 0;
-
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-});
-
-    </script>
+    <footer>
+        <h2>Mitra</h2>
+        <div class="partners">
+            <div class="partner"></div>
+            <div class="partner"></div>
+            <div class="partner"></div>
+        </div>
+    </footer>
 </body>
 </html>
